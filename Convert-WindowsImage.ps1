@@ -3041,7 +3041,7 @@ namespace WIM2VHD {
     function
     Test-WindowsVersion {
         $os = Get-WmiObject -Class Win32_OperatingSystem
-        $isWin8 = (($os.Version -ge 6.2) -and ($os.BuildNumber -ge $lowestSupportedBuild))
+        $isWin8 = (([version]$os.Version -ge [version]"6.2") -and ($os.BuildNumber -ge $lowestSupportedBuild))
 
         Write-W2VTrace "isWindows8? $isWin8"
         return $isWin8
